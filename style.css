@@ -97,7 +97,7 @@ header {
   background: linear-gradient(rgba(39, 39, 39, .4), rgba(39, 39, 39, .4)), url('./img/hero.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center center fixed;
   height: 100%;
   color: #eaebe4;
   display: flex;
