@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   background: #272727;
   font-family: 'Poppins', sans-serif;
@@ -101,7 +105,6 @@ header {
 #hero-section img {
   margin-top: -75px;
   width: 160px;
-  height: 100%;
 }
 
 #hero-section h1 {
