@@ -94,10 +94,11 @@ header {
 }
 
 #hero-section {
+  overflow: scroll;
   background: linear-gradient(rgba(39, 39, 39, .4), rgba(39, 39, 39, .4)), url('./img/hero.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center fixed;
+  background-position: center center;
   height: calc(100% + 70px);
   color: #eaebe4;
   display: flex;
