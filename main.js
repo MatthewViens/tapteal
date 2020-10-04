@@ -1,3 +1,4 @@
+const container = document.querySelector('#container');
 const menuBtn = document.querySelector('.menu-btn')
 const nav = document.querySelector('#nav-compact');
 const header = document.querySelector('header');
@@ -6,8 +7,8 @@ const hamburgerTopColor = window.getComputedStyle(hamburger, ':before').getPrope
 const hamburgerBottomColor = window.getComputedStyle(hamburger, ':after').getPropertyValue('background')
 
 let menuOpen = false;
-menuBtn.addEventListener('click', () => {
-  console.log('clicked')
+menuBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
   if(menuOpen) {
     menuOpen = false;
     menuBtn.classList.remove('open');
@@ -21,5 +22,16 @@ menuBtn.addEventListener('click', () => {
     // header.style.color = '#000';
     nav.style.left = '50%';
   }
+  console.log('hamburger clicked')
+  console.log(menuOpen)
+})
+
+container.addEventListener('click', (e) => {
+  if(menuOpen) {
+    menuOpen = false;
+    menuBtn.classList.remove('open');
+    nav.style.left = '100%'
+  }
+  console.log('container clicked')
   console.log(menuOpen)
 })
