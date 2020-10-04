@@ -7,9 +7,11 @@
 body {
   background: #272727;
   font-family: 'Poppins', sans-serif;
+  height: 100%;
 }
 
 #container {
+  height: 100%;
   position: absolute;
   width: 100%;
   overflow: hidden;
@@ -88,7 +90,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  min-height: 100vh;
+  height: 100%;
   color: #eaebe4;
   display: flex;
   flex-direction: column;
