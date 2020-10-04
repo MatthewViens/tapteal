@@ -101,6 +101,7 @@ header {
 #hero-section img {
   margin-top: -75px;
   width: 160px;
+  height: 100%;
 }
 
 #hero-section h1 {
