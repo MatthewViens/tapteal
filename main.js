@@ -1,4 +1,6 @@
 const container = document.querySelector('#container');
+const body = document.querySelector('body')
+const hero = document.querySelector('#hero-section')
 const menuBtn = document.querySelector('.menu-btn')
 const nav = document.querySelector('#nav-compact');
 const header = document.querySelector('header');
@@ -35,3 +37,7 @@ container.addEventListener('click', (e) => {
   console.log('container clicked')
   console.log(menuOpen)
 })
+
+let viewportHeight = container.offsetHeight
+hero.style.height = viewportHeight
+console.log(viewportHeight)
