@@ -4,7 +4,7 @@ const body      = document.querySelector('body'),
       menuBtn   = document.querySelector('.menu-btn'),
       nav       = document.querySelector('#nav-compact'),
       header    = document.querySelector('header'),
-      hamburger = document.querySelector('.menu-btn__burger'),
+      [menuTop, menuMiddle, menuBottom] = Array.from(document.querySelectorAll('.menu-btn__burger')),
       logo      = document.querySelector('.logo-img')
 
 let viewportHeight  = body.offsetHeight,
@@ -18,7 +18,9 @@ const atTop = () => {
 const openMenu = () => {
   menuOpen = true
   menuBtn.classList.add('open')
-  hamburger.style.backgroundColor = "#eaebe4"
+  menuTop.style.backgroundColor = '#eaebe4'
+  menuMiddle.style.backgroundColor = 'transparent'
+  menuBottom.style.backgroundColor = '#eaebe4'
   nav.style.left = "50%"
 }
 
@@ -27,9 +29,13 @@ const closeMenu = () => {
   menuBtn.classList.remove('open')
   nav.style.left = '100%'
   if (atTop()) {
-    hamburger.style.backgroundColor = "#eaebe4"
+    menuTop.style.backgroundColor = '#eaebe4'
+    menuMiddle.style.backgroundColor = '#eaebe4'
+    menuBottom.style.backgroundColor = '#eaebe4'
   } else {
-    hamburger.style.backgroundColor = "#272727"
+    menuTop.style.backgroundColor = '#272727'
+    menuMiddle.style.backgroundColor = '#272727'
+    menuBottom.style.backgroundColor = '#272727'
   }
 }
 
@@ -51,12 +57,16 @@ body.addEventListener('click', () => {
 window.addEventListener('scroll', () => {
   yPos = window.scrollY
   if (atTop()) {
-    hamburger.style.backgroundColor = "#eaebe4"
+    menuTop.style.backgroundColor = '#eaebe4'
+    menuMiddle.style.backgroundColor = '#eaebe4'
+    menuBottom.style.backgroundColor = '#eaebe4'
     header.classList.remove('background-scrolled')
     logo.src = "./img/logo.svg"
   } else {
     if(!menuOpen) {
-      hamburger.style.backgroundColor = "#272727"
+      menuTop.style.backgroundColor = '#272727'
+      menuMiddle.style.backgroundColor = '#272727'
+      menuBottom.style.backgroundColor = '#272727'
     }
     header.classList.add('background-scrolled')
     logo.src = "./img/logo-black.svg";
