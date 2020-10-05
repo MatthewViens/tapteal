@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: #272727;
+  background: #eaebe4;
   font-family: 'Poppins', sans-serif;
   height: 100vh;
 }
@@ -37,11 +37,23 @@ header {
   width: 100%;
   height: 60px;
   position: fixed;
-  background: transparent;
+  background-color: rgba(234, 235, 228, 0);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  color: #fff;
+  color: #dadbd0;
+  -webkit-transition: background-color .5s;
+  -moz-transition: background-color .5s;
+  -o-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+.background-scrolled {
+  background-color: rgba(234, 235, 228, 1);
+}
+
+.text-scrolled {
+  color: #272727;
 }
 
 .logo {
@@ -155,7 +167,7 @@ header {
   position: absolute;
   width: 30px;
   height: 2px;
-  background: #eaebe4;
+  background: inherit;
   border-radius: 5px;
   transition: all .2s ease-in-out;
 }
