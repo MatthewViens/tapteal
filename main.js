@@ -1,60 +1,66 @@
-const container = document.querySelector('#container');
-const body = document.querySelector('body')
-const hero = document.querySelector('#hero-section')
-const menuBtn = document.querySelector('.menu-btn')
-const nav = document.querySelector('#nav-compact');
-const header = document.querySelector('header');
-const hamburger = document.querySelector('.menu-btn__burger');
-const hamburgerTopColor = window.getComputedStyle(hamburger, ':before').getPropertyValue('background')
-const hamburgerBottomColor = window.getComputedStyle(hamburger, ':after').getPropertyValue('background')
-const logo = document.querySelector('.logo-img')
 
-let menuOpen = false;
+const body      = document.querySelector('body'),
+      hero      = document.querySelector('#hero-section'),
+      menuBtn   = document.querySelector('.menu-btn'),
+      nav       = document.querySelector('#nav-compact'),
+      header    = document.querySelector('header'),
+      hamburger = document.querySelector('.menu-btn__burger'),
+      logo      = document.querySelector('.logo-img')
+
+let viewportHeight  = body.offsetHeight,
+    yPos            = 0,
+    menuOpen        = false
+
+const atTop = () => {
+  return yPos < 10
+}
+
+const openMenu = () => {
+  menuOpen = true
+  menuBtn.classList.add('open')
+  hamburger.style.backgroundColor = "#eaebe4"
+  nav.style.left = "50%"
+}
+
+const closeMenu = () => {
+  menuOpen = false
+  menuBtn.classList.remove('open')
+  nav.style.left = '100%'
+  if (atTop()) {
+    hamburger.style.backgroundColor = "#eaebe4"
+  } else {
+    hamburger.style.backgroundColor = "#272727"
+  }
+}
+
 menuBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   if(menuOpen) {
-    menuOpen = false;
-    menuBtn.classList.remove('open');
-    nav.style.left = '100%';
-    if (window.scrollY > 10) {
-      hamburger.style.backgroundColor = "#272727";
-    }
-    // header.style.backgroundColor = 'transparent';
-    // header.style.color = '#fff';
+    closeMenu()
   } else {
-    menuOpen = true;
-    menuBtn.classList.add('open');
-    hamburger.style.backgroundColor = "#eaebe4";
-    nav.style.left = '50%';
+    openMenu()
   }
-  console.log('hamburger clicked')
-  console.log(menuOpen)
 })
 
-container.addEventListener('click', (e) => {
+body.addEventListener('click', () => {
   if(menuOpen) {
-    menuOpen = false;
-    menuBtn.classList.remove('open');
-    nav.style.left = '100%'
+    closeMenu()
   }
-  console.log('container clicked')
-  console.log(menuOpen)
 })
 
 window.addEventListener('scroll', () => {
-  height = window.scrollY
-  if (height > 10) {
-    hamburger.style.backgroundColor = "#272727";
-    logo.src = "./img/logo-black.svg";
-    // hamburgerTopColor = "#272727"
-    header.classList.add('background-scrolled')
-  } else {
-    hamburger.style.backgroundColor = "#eaebe4";
+  yPos = window.scrollY
+  if (atTop()) {
+    hamburger.style.backgroundColor = "#eaebe4"
     header.classList.remove('background-scrolled')
     logo.src = "./img/logo.svg"
+  } else {
+    if(!menuOpen) {
+      hamburger.style.backgroundColor = "#272727"
+    }
+    header.classList.add('background-scrolled')
+    logo.src = "./img/logo-black.svg";
   }
 })
 
-let viewportHeight = container.offsetHeight
 hero.style.height = viewportHeight
-console.log(viewportHeight)
